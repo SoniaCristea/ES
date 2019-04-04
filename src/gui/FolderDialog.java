@@ -7,6 +7,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
@@ -59,6 +60,22 @@ public class FolderDialog extends Composite {
       Button btnNewButton = new Button(composite_1, SWT.NONE);
       btnNewButton.setLayoutData(new GridData(SWT.FILL, SWT.RIGHT, true, false, 1, 1));
       btnNewButton.setText("Add");
+      
+      //TODO am adaugat listener pe buttonul asta random,dar merge
+      
+//      btnNewButton.addListener(SWT.Selection, new Listener() {
+//		
+//		@Override
+//		public void handleEvent(Event arg0) {
+//			
+//			Shell buttonPressedShell = new Shell(parent.getDisplay(),SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);
+//			buttonPressedShell.setText("I was opened when you pressed the button");
+//			buttonPressedShell.setLayout(parent.getLayout());
+//			buttonPressedShell.setSize(500, 500);
+//			
+//            buttonPressedShell.open();
+//		}
+//	});
      
 
 
