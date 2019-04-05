@@ -23,6 +23,7 @@ public class JSONObj {
 	private JSONObject object;
 	private BufferedWriter bw;
 
+
 	public JSONObj(String name, String considerSubfolders, BufferedWriter bw) {
 
 		object = new JSONObject();
@@ -38,7 +39,7 @@ public class JSONObj {
 		try {
 
 			bw.write(object.toString());
-			bw.append("\n");
+			bw.newLine();
 			bw.flush();
 
 		} catch (IOException e) {
