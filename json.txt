@@ -1,1 +1,2 @@
+{"considerSubfolder":"no","name":"Exam"}
 {"considerSubfolder":"yes","name":"Projects"}

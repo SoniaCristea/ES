@@ -65,7 +65,7 @@ public class Classifier {
 		}
 
 		// print out the list
-		System.out.println(fileList);
+		//System.out.println(fileList);
 	}
 
 	public static String removePunctuation(String word) {
