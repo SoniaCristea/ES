@@ -1,4 +1,4 @@
-package extensions;
+package util;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -18,13 +18,13 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class JSONObj {
+public class MyJSONobjCreator {
 
 	private JSONObject object;
 	private BufferedWriter bw;
 
 
-	public JSONObj(String name, String considerSubfolders, BufferedWriter bw) {
+	public MyJSONobjCreator(String name, String considerSubfolders, BufferedWriter bw) {
 
 		object = new JSONObject();
 		this.bw = bw;
