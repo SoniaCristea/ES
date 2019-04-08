@@ -1,23 +1,12 @@
 package main;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import extensions.Document;
 import extensions.JSONtoObject;
@@ -36,7 +25,7 @@ public class Main {
 		
 		BufferedWriter bw = new BufferedWriter(new FileWriter(jsonFile));
 		ArrayList<JSONtoObject> jsonFileContent = new ArrayList<>();
-//		
+		
 //		Crawler crawler = new Crawler();
 //		Classifier classifier = new Classifier();
 //		
@@ -54,7 +43,7 @@ public class Main {
 //			classifier.classify();
 //		}
 		
-		/* Asa am testat creator si parser de JSON
+		/*Asa am testat creator si parser de JSON*/
 		Tag t = new Tag("Flower", 2);
 		Tag t1 = new Tag("Bumblebee", 3);
 		Document doc = new Document("Botanic", "C:\\Desktop", true);
@@ -70,12 +59,11 @@ public class Main {
 		MyJSONParser myParser = new MyJSONParser();
 		
 		jsonFileContent = myParser.parseJSONFile(jsonFile);
-		System.out.println(jsonFileContent.toString());
-		*/
+		System.out.println(jsonFileContent.toString()); 
+		
 		
 		bw.close();
-		
 	}
-	
+
 }
 

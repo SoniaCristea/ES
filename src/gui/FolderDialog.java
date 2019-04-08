@@ -61,7 +61,7 @@ public class FolderDialog extends Composite {
       btnNewButton.setLayoutData(new GridData(SWT.FILL, SWT.RIGHT, true, false, 1, 1));
       btnNewButton.setText("Add");
       
-      //TODO am adaugat listener pe buttonul asta random,dar merge
+      //TODO listenerul asta deschide un shell nou
       
 //      btnNewButton.addListener(SWT.Selection, new Listener() {
 //		
@@ -76,6 +76,8 @@ public class FolderDialog extends Composite {
 //            buttonPressedShell.open();
 //		}
 //	});
+      
+      
      
 
 
@@ -202,14 +204,12 @@ public class FolderDialog extends Composite {
 						   file.getCanonicalPath().toString());
 						txtFiles.add(new Document(file.getName(),file.getCanonicalPath().toString(),false));
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 	            }else if(file.isDirectory()){
 					try {
 						searchInFolder(file.getCanonicalPath().toString());
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 	            }
@@ -220,6 +220,25 @@ public class FolderDialog extends Composite {
 	  return txtFiles;
 	  
   }
+  
+  //TODO 
+  /* Deci, tu mi-ai spus ca vrei de ex un buton din TagDialog sa deschida
+   * shell-ul pt FolderDialog. M-am gandit ca ar merge doar cand le pui pe toate
+   * intr-un singur main si cumva stii ordinea in care ele apar la user.
+   * De exemplu, sa zicem ca TagDialog e primul si dupa ce user-ul apasa un buton de next de ex,
+   *  o sa mearga la FolderDialog.
+   * Na, cumva clasa asa TagDialog sa aiba o metoda setNextDialogInstance(Composite nextDialog)
+   * pe care o apelam din main gen:
+   * 
+   * TagDialog td = new TagDialog();
+   * FolderDialog fd = new FolderDialog();
+   * td.setNextDialogInstance(fd);
+   * 
+   * si atunci in clasa TagDialog sa avem un atribut de tip FolderDialog care sa fie setat
+   * prin metoda asta de mai sus si pe care putem sa il deschidem prin listenerul de la buton.
+   * 
+   * Eu asa m-am gandit. Sper ca ai inteles ce vreau sa spun :D 
+   * Daca e ceva, spune-mi si mai fac si eu. */
   
   public static void main(String[] args) {
      
@@ -249,5 +268,7 @@ public class FolderDialog extends Composite {
       // tear down the SWT window
       display.dispose();
   }
+  
+ 
 
 }
