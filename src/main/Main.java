@@ -54,14 +54,14 @@ public class Main {
 		doc.setTags(tagList);
 		doc.setUserSelectedTags(userList);
 		
-		MyJSONobjCreator jo2 = new MyJSONobjCreator(doc,bw);
+		MyJSONobjCreator jo1 = new MyJSONobjCreator(doc, bw);
 		
 		MyJSONParser myParser = new MyJSONParser();
 		
 		jsonFileContent = myParser.parseJSONFile(jsonFile);
 		System.out.println(jsonFileContent.toString()); 
 		
-		
+	
 		bw.close();
 	}
 
