@@ -1,29 +1,37 @@
 package extensions;
 
+import java.util.ArrayList;
+
 public class JSONtoObject {
 	
-	private String considerSubfolder;
-	private String name;
+	private String folderName;
+	private ArrayList<Tag> tagList;
+	private ArrayList<Tag> userSelectedTags;
 	
-	public JSONtoObject(String considerSubfolder, String name) {
+	public JSONtoObject(String folderName, ArrayList<Tag> tagList, ArrayList<Tag> userSelectedTags) {
 		
-		this.considerSubfolder = considerSubfolder;
-		this.name = name;
+		this.folderName = folderName;
+		this.tagList = tagList;
+		this.userSelectedTags = userSelectedTags;
 	}
 
-	public String getConsiderSubfolder() {
-		return considerSubfolder;
+	public String getFolderName() {
+		return folderName;
 	}
 
-	public String getName() {
-		return name;
+	public ArrayList<Tag> getTagList() {
+		return tagList;
+	}
+
+	public ArrayList<Tag> getUserSelectedTags() {
+		return userSelectedTags;
 	}
 
 	@Override
 	public String toString() {
-		return "JSONtoObject [considerSubfolder=" + considerSubfolder + ", name=" + name + "]";
+		return "Folder [folderName=" + folderName + ", tagList=" + tagList + ", userSelectedTags="
+				+ userSelectedTags + "]";
 	}
 	
 	
-
 }

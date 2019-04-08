@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -18,10 +19,13 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import extensions.JSONObj;
+import extensions.Document;
 import extensions.JSONtoObject;
+import extensions.Tag;
 import util.Classifier;
 import util.Crawler;
+import util.MyJSONobjCreator;
+import util.MyJSONParser;
 
 public class Main {
 	
@@ -32,56 +36,46 @@ public class Main {
 		
 		BufferedWriter bw = new BufferedWriter(new FileWriter(jsonFile));
 		ArrayList<JSONtoObject> jsonFileContent = new ArrayList<>();
+//		
+//		Crawler crawler = new Crawler();
+//		Classifier classifier = new Classifier();
+//		
+//		URL url = null;
+//		String stringURL = null;
+//		
+//		try {
+//			url = new URL("https://en.wikipedia.org/wiki");
+//			stringURL = url.toString() + "Toy"; //instead of Toy, set tag name
+//		} catch (MalformedURLException e) {
+//			System.out.println(e.getMessage());
+//		}
+//		
+//		if ( crawler.retrieveHTMLBody(stringURL)){
+//			classifier.classify();
+//		}
 		
-		Crawler crawler = new Crawler();
-		Classifier classifier = new Classifier();
+		/* Asa am testat creator si parser de JSON
+		Tag t = new Tag("Flower", 2);
+		Tag t1 = new Tag("Bumblebee", 3);
+		Document doc = new Document("Botanic", "C:\\Desktop", true);
+		ArrayList<Tag> tagList = new ArrayList<>();
+		ArrayList<Tag> userList = new ArrayList<>();
+		tagList.add(t);
+		tagList.add(t1);
+		doc.setTags(tagList);
+		doc.setUserSelectedTags(userList);
 		
-		URL url = null;
-		String stringURL = null;
+		MyJSONobjCreator jo2 = new MyJSONobjCreator(doc,bw);
 		
-		try {
-			url = new URL("https://en.wikipedia.org/wiki");
-			stringURL = url.toString() + "Toy"; //instead of Toy, set tag name
-		} catch (MalformedURLException e) {
-			System.out.println(e.getMessage());
-		}
+		MyJSONParser myParser = new MyJSONParser();
 		
-		if ( crawler.retrieveHTMLBody(stringURL)){
-			classifier.classify();
-		}
-		
-		JSONObj jo1 = new JSONObj("Exam", "no",bw);
-		JSONObj jo2 = new JSONObj("Projects", "yes",bw);
-		
-		jsonFileContent = parseJSONFile();
-		System.out.println(jsonFileContent);
+		jsonFileContent = myParser.parseJSONFile(jsonFile);
+		System.out.println(jsonFileContent.toString());
+		*/
 		
 		bw.close();
+		
 	}
 	
-	private static ArrayList<JSONtoObject> parseJSONFile(){
-		
-		BufferedReader br = null;
-		String line = null;
-		JSONObject jo = null;
-		ArrayList<JSONtoObject> list = new ArrayList<>();
-		
-		try {
-			br = new BufferedReader(new InputStreamReader(new FileInputStream(jsonFile)));
-			
-			while((line = br.readLine())!=null){
-				
-				line = line.trim();
-				jo = (JSONObject) new JSONParser().parse(line);
-				JSONtoObject jto = new JSONtoObject(jo.get("considerSubfolder").toString(), jo.get("name").toString());
-				list.add(jto);
-			}
-		} catch (IOException | ParseException e) {
-			System.out.println(e.getMessage());
-		}
-		
-		return list;
-
-	}
 }
 
