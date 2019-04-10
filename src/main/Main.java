@@ -20,12 +20,11 @@ public class Main {
 	
 	static File jsonFile = new File("json.txt");
 	
-	
 	public static void main(String[] args) throws IOException{
 		
-		BufferedWriter bw = new BufferedWriter(new FileWriter(jsonFile));
-		ArrayList<JSONtoObject> jsonFileContent = new ArrayList<>();
-		
+//		BufferedWriter bw = new BufferedWriter(new FileWriter(jsonFile));
+//		ArrayList<JSONtoObject> jsonFileContent = new ArrayList<>();
+//		
 //		Crawler crawler = new Crawler();
 //		Classifier classifier = new Classifier();
 //		
@@ -41,28 +40,29 @@ public class Main {
 //		
 //		if ( crawler.retrieveHTMLBody(stringURL)){
 //			classifier.classify();
-//		}
-		
-		/*Asa am testat creator si parser de JSON*/
-		Tag t = new Tag("Flower", 2);
-		Tag t1 = new Tag("Bumblebee", 3);
-		Document doc = new Document("Botanic", "C:\\Desktop", true);
-		ArrayList<Tag> tagList = new ArrayList<>();
-		ArrayList<Tag> userList = new ArrayList<>();
-		tagList.add(t);
-		tagList.add(t1);
-		doc.setTags(tagList);
-		doc.setUserSelectedTags(userList);
-		
-		MyJSONobjCreator jo1 = new MyJSONobjCreator(doc, bw);
-		
-		MyJSONParser myParser = new MyJSONParser();
-		
-		jsonFileContent = myParser.parseJSONFile(jsonFile);
-		System.out.println(jsonFileContent.toString()); 
-		
-	
-		bw.close();
+////		}
+//		
+//		Asa am testat creator si parser de JSON
+//		
+//		Tag t = new Tag("Flower", 2);
+//		Tag t1 = new Tag("Bumblebee", 3);
+//		Document doc = new Document("Botanic", "C:\\Desktop", true);
+//		ArrayList<Tag> tagList = new ArrayList<>();
+//		ArrayList<Tag> userList = new ArrayList<>();
+//		tagList.add(t);
+//		tagList.add(t1);
+//		doc.setTags(tagList);
+//		doc.setUserSelectedTags(userList);
+//		
+//		MyJSONobjCreator jo1 = new MyJSONobjCreator(doc, bw);
+//		
+//		MyJSONParser myParser = new MyJSONParser();
+//		
+//		jsonFileContent = myParser.parseJSONFile(jsonFile);
+//		System.out.println(jsonFileContent.toString()); 
+//		
+//	
+//		bw.close();
 	}
 
 }
