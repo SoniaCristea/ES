@@ -24,6 +24,7 @@ public class FolderDialog extends JFrame{
 	public FolderDialog(){
 		
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		setTitle("Folders");
 		setSize(500, 500);
 		setContentPane(panel);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));

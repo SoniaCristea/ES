@@ -17,6 +17,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.TableColumn;
 
 import org.eclipse.swt.events.MouseAdapter;
 
@@ -28,6 +29,7 @@ public class TagDialog extends JFrame {
 	public TagDialog() {
 
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		setTitle("Tags");
 		setSize(500, 500);
 		setContentPane(panel);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
