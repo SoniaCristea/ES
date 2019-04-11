@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import gui_functionality.FolderDialogFunc;
 
@@ -50,9 +51,13 @@ public class FolderDialog extends JFrame{
 		addFolderBtn.setMaximumSize(new Dimension(150, 30));
 		
 		
-		table = new JTable(new String[][]{}, new String[]{ "No.", "Folder name"});
+		table = new JTable(new DefaultTableModel (new String[][]{}, new String[]{"No.", "Folder name"}));
 		table.setAlignmentX(LEFT_ALIGNMENT);
 		table.getColumnModel().getColumn(1).setPreferredWidth(300);
+		
+		JScrollPane sp = new JScrollPane(table);
+		sp.setAlignmentX(LEFT_ALIGNMENT);
+		sp.setMaximumSize(new Dimension(430, 100));
 		
 		panel.add(considerSubfoldersCB);
 		panel.add(Box.createRigidArea(new Dimension(10, 10)));
@@ -62,11 +67,7 @@ public class FolderDialog extends JFrame{
 		panel.add(Box.createRigidArea(new Dimension(10, 10)));
 		panel.add(addFolderBtn);
 		panel.add(Box.createRigidArea(new Dimension(10, 10)));
-
-		JScrollPane sp = new JScrollPane(table);
-		sp.setAlignmentX(LEFT_ALIGNMENT);
 		panel.add(sp);
-		sp.setMaximumSize(new Dimension(430, 100));
 		panel.setVisible(true);
 		
 		FolderDialogFunc fdf = new FolderDialogFunc(this);

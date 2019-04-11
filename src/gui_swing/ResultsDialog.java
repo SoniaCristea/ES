@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import gui_functionality.ResultsDialogFunc;
 
@@ -33,7 +34,7 @@ public class ResultsDialog extends JFrame{
 		
 		buttonsPannel.setLayout(new GridLayout(1, 3));
 		
-		table = new JTable(new String[][]{}, new String[]{ "No.", "File name", "Tags","User classified", "User selected tags"});
+		table = new JTable(new DefaultTableModel (new String[][]{}, new String[]{"No.", "File name", "Tags","User classified", "User selected tags"}));
 		table.getColumnModel().getColumn(0).setPreferredWidth(20);
 		table.setAlignmentX(LEFT_ALIGNMENT);
 		

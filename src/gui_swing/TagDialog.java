@@ -2,6 +2,7 @@ package gui_swing;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -13,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import gui_functionality.TagDialogFunc;
 
@@ -23,6 +25,8 @@ public class TagDialog extends JFrame {
 	private JPanel panel = new JPanel();
 	private JButton addTagBtn;
 	private JTable table;
+	private JTextField nameTxtField;
+	private JTextField tresholdTxtField;
 
 	public TagDialog() {
 
@@ -37,7 +41,7 @@ public class TagDialog extends JFrame {
 		tagName.setFont(new Font("Sans Serif", Font.BOLD, 15));
 		tagName.setAlignmentX(LEFT_ALIGNMENT);
 		
-		JTextField nameTxtField = new JTextField();
+		nameTxtField = new JTextField();
 		nameTxtField.setMaximumSize(new Dimension(430, 30));
 		nameTxtField.setAlignmentX(LEFT_ALIGNMENT);
 		tagName.setLabelFor(nameTxtField);
@@ -45,7 +49,7 @@ public class TagDialog extends JFrame {
 		JLabel tagTreshold = new JLabel("Enter tag treshold:");
 		tagTreshold.setFont(new Font("Sans Serif", Font.BOLD, 15));
 		
-		JTextField tresholdTxtField = new JTextField();
+		tresholdTxtField = new JTextField();
 		tresholdTxtField.setMaximumSize(new Dimension(430, 30));
 		tresholdTxtField.setAlignmentX(LEFT_ALIGNMENT);
 		tagTreshold.setLabelFor(tresholdTxtField);
@@ -53,14 +57,13 @@ public class TagDialog extends JFrame {
 		addTagBtn = new JButton("Add tag");
 		addTagBtn.setMaximumSize(new Dimension(150, 30));
 
-		table = new JTable(new String[][]{}, new String[]{ "No.", "Tag name", "Treshold" });
+		table = new JTable(new DefaultTableModel (new String[][]{}, new String[]{ "No.", "Tag name", "Treshold" }));
 		table.setAlignmentX(LEFT_ALIGNMENT);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		table.getColumnModel().getColumn(1).setPreferredWidth(200);
 		table.getColumnModel().getColumn(2).setPreferredWidth(150);
 		JScrollPane sp = new JScrollPane(table);
 		sp.setAlignmentX(LEFT_ALIGNMENT);
-		panel.add(sp);
 		sp.setMaximumSize(new Dimension(430, 100));
 		
 		panel.add(tagName);
@@ -73,6 +76,7 @@ public class TagDialog extends JFrame {
 		panel.add(Box.createRigidArea(new Dimension(10, 15)));
 		panel.add(addTagBtn);
 		panel.add(Box.createRigidArea(new Dimension(10, 15)));
+		panel.add(sp);
 		panel.setVisible(true);
 		
 		TagDialogFunc tdf = new TagDialogFunc(this);
@@ -85,6 +89,14 @@ public class TagDialog extends JFrame {
 	
 	public JTable getTagDialogTable(){
 		return table;
+	}
+
+	public JTextField getNameTxtField() {
+		return nameTxtField;
+	}
+
+	public JTextField getTresholdTxtField() {
+		return tresholdTxtField;
 	}
 
 }
