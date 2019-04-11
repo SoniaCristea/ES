@@ -15,6 +15,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import gui_functionality.FolderDialogFunc;
+import gui_functionality.ResultsDialogFunc;
+import gui_functionality.TagDialogFunc;
+
 
 
 public class Menu extends JFrame {
@@ -40,7 +44,6 @@ public class Menu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				TagDialog td = new TagDialog();
-
 			}
 		});
 
@@ -50,7 +53,6 @@ public class Menu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				FolderDialog fd = new FolderDialog();
-
 			}
 		});
 
@@ -60,7 +62,6 @@ public class Menu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ResultsDialog rd = new ResultsDialog();
-				
 			}
 		});
 

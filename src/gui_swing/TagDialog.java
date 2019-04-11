@@ -2,8 +2,6 @@ package gui_swing;
 
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -15,16 +13,16 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.TableColumn;
 
-import org.eclipse.swt.events.MouseAdapter;
+import gui_functionality.TagDialogFunc;
+
 
 
 public class TagDialog extends JFrame {
 
 	private JPanel panel = new JPanel();
+	private JButton addTagBtn;
+	private JTable table;
 
 	public TagDialog() {
 
@@ -38,6 +36,7 @@ public class TagDialog extends JFrame {
 		JLabel tagName = new JLabel("Enter tag name: ");
 		tagName.setFont(new Font("Sans Serif", Font.BOLD, 15));
 		tagName.setAlignmentX(LEFT_ALIGNMENT);
+		
 		JTextField nameTxtField = new JTextField();
 		nameTxtField.setMaximumSize(new Dimension(430, 30));
 		nameTxtField.setAlignmentX(LEFT_ALIGNMENT);
@@ -45,28 +44,24 @@ public class TagDialog extends JFrame {
 
 		JLabel tagTreshold = new JLabel("Enter tag treshold:");
 		tagTreshold.setFont(new Font("Sans Serif", Font.BOLD, 15));
+		
 		JTextField tresholdTxtField = new JTextField();
 		tresholdTxtField.setMaximumSize(new Dimension(430, 30));
 		tresholdTxtField.setAlignmentX(LEFT_ALIGNMENT);
 		tagTreshold.setLabelFor(tresholdTxtField);
 
-		JButton addTagBtn = new JButton("Add tag");
+		addTagBtn = new JButton("Add tag");
 		addTagBtn.setMaximumSize(new Dimension(150, 30));
 
-		String[][] data = {};
-		String[] columnNames = { "No.", "Tag name", "Treshold" };
-		JTable table = new JTable(data, columnNames);
+		table = new JTable(new String[][]{}, new String[]{ "No.", "Tag name", "Treshold" });
 		table.setAlignmentX(LEFT_ALIGNMENT);
-		table.getModel().addTableModelListener(new TableModelListener() {
-			
-			@Override
-			public void tableChanged(TableModelEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
-
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		table.getColumnModel().getColumn(1).setPreferredWidth(200);
+		table.getColumnModel().getColumn(2).setPreferredWidth(150);
+		JScrollPane sp = new JScrollPane(table);
+		sp.setAlignmentX(LEFT_ALIGNMENT);
+		panel.add(sp);
+		sp.setMaximumSize(new Dimension(430, 100));
 		
 		panel.add(tagName);
 		panel.add(Box.createRigidArea(new Dimension(10, 10)));
@@ -78,19 +73,18 @@ public class TagDialog extends JFrame {
 		panel.add(Box.createRigidArea(new Dimension(10, 15)));
 		panel.add(addTagBtn);
 		panel.add(Box.createRigidArea(new Dimension(10, 15)));
-		
-		JScrollPane sp = new JScrollPane(table);
-		sp.setAlignmentX(LEFT_ALIGNMENT);
-		panel.add(sp);
-		sp.setMaximumSize(new Dimension(430, 100));
 		panel.setVisible(true);
-
+		
+		TagDialogFunc tdf = new TagDialogFunc(this);
 		setVisible(true);
 	}
-//
-//	public static void main(String[] args) {
-//
-//		TagDialog td = new TagDialog();
-//	}
+	
+	public JButton getAddTagBtn(){
+		return addTagBtn;
+	}
+	
+	public JTable getTagDialogTable(){
+		return table;
+	}
 
 }

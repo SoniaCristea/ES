@@ -14,12 +14,16 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
+
+import gui_functionality.FolderDialogFunc;
 
 public class FolderDialog extends JFrame{
 	
 	private JPanel panel = new JPanel();
+	private JCheckBox considerSubfoldersCB;
+	private JTextField folderNameTxt;
+	private JButton addFolderBtn;
+	private JTable table;
 	
 	public FolderDialog(){
 		
@@ -30,33 +34,25 @@ public class FolderDialog extends JFrame{
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 30));
 		
-		JCheckBox considerSubfoldersCB = new JCheckBox("Consider subfolders");
-		considerSubfoldersCB.setFont(new Font("Sans Serif", Font.BOLD, 17));
+		considerSubfoldersCB = new JCheckBox("Consider subfolders");
+		considerSubfoldersCB.setFont(new Font("Sans Serif", Font.ITALIC, 17));
 		
 		JLabel folderName = new JLabel("Enter folder name: ");
 		folderName.setFont(new Font("Sans Serif", Font.BOLD, 15));
 		folderName.setAlignmentX(LEFT_ALIGNMENT);
 		
-		JTextField folderNameTxt = new JTextField();
+		folderNameTxt = new JTextField();
 		folderNameTxt.setMaximumSize(new Dimension(430, 30));
 		folderNameTxt.setAlignmentX(LEFT_ALIGNMENT);
 		folderName.setLabelFor(folderNameTxt);
 		
-		JButton addFolderBtn = new JButton("Add folder");
+		addFolderBtn = new JButton("Add folder");
 		addFolderBtn.setMaximumSize(new Dimension(150, 30));
 		
-		String[][] data = {};
-		String[] columnNames = { "No.", "Folder name"};
-		JTable table = new JTable(data, columnNames);
+		
+		table = new JTable(new String[][]{}, new String[]{ "No.", "Folder name"});
 		table.setAlignmentX(LEFT_ALIGNMENT);
-		table.getModel().addTableModelListener(new TableModelListener() {
-			
-			@Override
-			public void tableChanged(TableModelEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		table.getColumnModel().getColumn(1).setPreferredWidth(300);
 		
 		panel.add(considerSubfoldersCB);
 		panel.add(Box.createRigidArea(new Dimension(10, 10)));
@@ -66,7 +62,6 @@ public class FolderDialog extends JFrame{
 		panel.add(Box.createRigidArea(new Dimension(10, 10)));
 		panel.add(addFolderBtn);
 		panel.add(Box.createRigidArea(new Dimension(10, 10)));
-		
 
 		JScrollPane sp = new JScrollPane(table);
 		sp.setAlignmentX(LEFT_ALIGNMENT);
@@ -74,7 +69,26 @@ public class FolderDialog extends JFrame{
 		sp.setMaximumSize(new Dimension(430, 100));
 		panel.setVisible(true);
 		
+		FolderDialogFunc fdf = new FolderDialogFunc(this);
 		setVisible(true);
 	}
+
+	public JCheckBox getConsiderSubfoldersCB() {
+		return considerSubfoldersCB;
+	}
+
+	public JTextField getFolderNameTxt() {
+		return folderNameTxt;
+	}
+
+	public JButton getAddFolderBtn() {
+		return addFolderBtn;
+	}
+
+	public JTable getTable() {
+		return table;
+	}
+	
+	
 	
 }

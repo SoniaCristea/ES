@@ -2,9 +2,9 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="C:/Users/Sonia/Desktop/ES/javafx-ui-swing.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sonia/Desktop/ES/json-simple-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sonia/Desktop/ES/jsoup-1.11.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sonia/Desktop/ES/swt-win64-3.6.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/scriste/workspace/ES/javafx-ui-swing.jar"/>
+	<classpathentry kind="lib" path="C:/Users/scriste/workspace/ES/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/scriste/workspace/ES/jsoup-1.11.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/scriste/workspace/ES/swt-win64-3.6.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
