@@ -50,6 +50,7 @@ public class TagDialogFunc {
 				tresholdTxt.setText("");
 			}
 		});
+	
 		
 	}
 

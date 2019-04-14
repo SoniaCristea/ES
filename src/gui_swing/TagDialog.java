@@ -2,6 +2,10 @@ package gui_swing;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -16,6 +20,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import extensions.Tag;
 import gui_functionality.TagDialogFunc;
 
 
@@ -34,6 +39,7 @@ public class TagDialog extends JFrame {
 		setTitle("Tags");
 		setSize(500, 500);
 		setContentPane(panel);
+		
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 30));
 
@@ -66,6 +72,17 @@ public class TagDialog extends JFrame {
 		sp.setAlignmentX(LEFT_ALIGNMENT);
 		sp.setMaximumSize(new Dimension(430, 100));
 		
+		JButton closeBtn = new JButton("OK");
+		closeBtn.setAlignmentX(LEFT_ALIGNMENT);
+		closeBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				
+			}
+		});
+		
 		panel.add(tagName);
 		panel.add(Box.createRigidArea(new Dimension(10, 10)));
 		panel.add(nameTxtField);
@@ -77,12 +94,16 @@ public class TagDialog extends JFrame {
 		panel.add(addTagBtn);
 		panel.add(Box.createRigidArea(new Dimension(10, 15)));
 		panel.add(sp);
+		panel.add(Box.createRigidArea(new Dimension(10, 15)));
+		panel.add(closeBtn);
 		panel.setVisible(true);
 		
 		TagDialogFunc tdf = new TagDialogFunc(this);
+		
 		setVisible(true);
 	}
 	
+
 	public JButton getAddTagBtn(){
 		return addTagBtn;
 	}

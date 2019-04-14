@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -55,11 +56,11 @@ public class ResultsDialog extends JFrame{
 		clearBtn = new JButton("Clear user classification");
 		clearBtn.setAlignmentX(CENTER_ALIGNMENT);
 		clearBtn.setMaximumSize(new Dimension(200, 30));
-		
+
 		
 		buttonsPannel.add(btnRun);	
 		buttonsPannel.add(modifyTagsBtn);	
-		buttonsPannel.add(clearBtn);	
+		buttonsPannel.add(clearBtn);
 		
 		panel.add(buttonsPannel,BorderLayout.SOUTH);
 		

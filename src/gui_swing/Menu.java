@@ -21,7 +21,7 @@ import gui_functionality.TagDialogFunc;
 
 
 
-public class Menu extends JFrame {
+public class Menu extends JFrame{
 
 	private JPanel panel = new JPanel();
 
