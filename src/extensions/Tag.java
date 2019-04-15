@@ -6,12 +6,19 @@ public class Tag {
 	private String name;
 	private int threshold;
 	private ArrayList<Document> files;
+	private int timesOfClassification;
 	
 	public Tag(String name, int threshold) {
 		super();
 		this.name = name;
 		this.threshold = threshold;
 		files=new ArrayList<>();
+		timesOfClassification = 0;
+	}
+
+	
+	public int getTimesOfClassification() {
+		return timesOfClassification;
 	}
 
 	public String getName() {

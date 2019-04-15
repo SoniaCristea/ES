@@ -24,6 +24,9 @@ import gui_functionality.TagDialogFunc;
 public class Menu extends JFrame {
 
 	private JPanel panel = new JPanel();
+	private TagDialog td;
+	private FolderDialog fd;
+	private ResultsDialog rd;
 
 	public Menu() {
 
@@ -31,10 +34,11 @@ public class Menu extends JFrame {
 		setTitle("Menu");
 		setSize(400, 350);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		panel.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 120));
+		panel.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 100));
 		setContentPane(panel);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+		
 
 		JLabel label = createLabel("Choose action:");
 
@@ -43,7 +47,7 @@ public class Menu extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TagDialog td = new TagDialog();
+				td = new TagDialog();
 			}
 		});
 
@@ -52,16 +56,16 @@ public class Menu extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FolderDialog fd = new FolderDialog();
+				fd = new FolderDialog();
 			}
 		});
 
-		JButton resultsDialogBtn = createButton("View results");
+		JButton resultsDialogBtn = createButton("Show classification");
 		resultsDialogBtn.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ResultsDialog rd = new ResultsDialog();
+				rd = new ResultsDialog(td, fd);
 			}
 		});
 
@@ -96,11 +100,6 @@ public class Menu extends JFrame {
 		button.setAlignmentX(CENTER_ALIGNMENT);
 
 		return button;
-	}
-
-	public static void main(String[] args) {
-
-		Menu menu = new Menu();
 	}
 
 }

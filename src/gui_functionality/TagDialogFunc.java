@@ -15,23 +15,20 @@ import gui_swing.TagDialog;
 
 public class TagDialogFunc {
 	
-	private TagDialog td;
 	private JButton addTagBtn = new JButton();
 	private JTable table = new JTable();
 	private JTextField tagNameTxt = new JTextField();
 	private JTextField tresholdTxt = new JTextField();
 	private int counter = 0;
-	private static ArrayList<Tag> tags;
+	private ArrayList<Tag> tags = new ArrayList<>();
 	
 	
 	public TagDialogFunc(TagDialog td){
 		
-		this.td = td;
 		addTagBtn = td.getAddTagBtn();
 		table = td.getTagDialogTable();
 		tagNameTxt = td.getNameTxtField();
 		tresholdTxt = td.getTresholdTxtField();
-		tags = new ArrayList<>();
 		
 		addTagBtn.addActionListener(new ActionListener() {
 			
@@ -44,8 +41,7 @@ public class TagDialogFunc {
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
 				Tag tag = new Tag(tagName, Integer.parseInt(treshold));
 				tags.add(tag);
-				model.addRow(new String[]{Integer.toString(counter), tagName, treshold});
-				counter++;
+				model.addRow(new String[]{Integer.toString(++counter), tagName, treshold});
 				tagNameTxt.setText("");
 				tresholdTxt.setText("");
 			}

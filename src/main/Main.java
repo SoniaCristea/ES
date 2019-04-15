@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import extensions.Document;
 import extensions.JSONtoObject;
 import extensions.Tag;
+import gui_swing.Menu;
 import util.Classifier;
 import util.Crawler;
 import util.MyJSONobjCreator;
@@ -63,6 +64,8 @@ public class Main {
 //		
 //	
 //		bw.close();
+		
+		Menu menu = new Menu();
 	}
 
 }

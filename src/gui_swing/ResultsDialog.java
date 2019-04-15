@@ -23,10 +23,10 @@ public class ResultsDialog extends JFrame{
 	private JButton modifyTagsBtn;
 	private JButton clearBtn;
 	
-	public ResultsDialog() {
+	public ResultsDialog(TagDialog td, FolderDialog fd) {
 		
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setTitle("Results");
+		setTitle("User actions");
 		setSize(700, 600);
 		setContentPane(panel);
 		panel.setLayout(new BorderLayout());
@@ -63,7 +63,8 @@ public class ResultsDialog extends JFrame{
 		
 		panel.add(buttonsPannel,BorderLayout.SOUTH);
 		
-		ResultsDialogFunc rdf = new ResultsDialogFunc(this);
+		ResultsDialogFunc rdf = new ResultsDialogFunc(this, td, fd);
+		
 		setVisible(true);
 	}
 
