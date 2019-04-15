@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,6 +26,7 @@ public class ResultsDialogFunc {
 	private TagDialogFunc tdf;
 	private FolderDialogFunc fdf;
 	private ArrayList<Tag> userClassifiedTags = new ArrayList<>();
+	private DefaultTableModel model;
 
 	public ResultsDialogFunc(ResultsDialog rd, TagDialog td, FolderDialog fd) {
 
@@ -36,7 +38,7 @@ public class ResultsDialogFunc {
 		modifyTagsBtn = rd.getModifyTagsBtn();
 		clearBtn = rd.getClearBtn();
 
-		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		model = (DefaultTableModel) table.getModel();
 		ArrayList<Document> folders = fdf.getFolders();
 		userClassifiedTags = tdf.getTags();
 
@@ -65,10 +67,41 @@ public class ResultsDialogFunc {
 			for (Tag t : userClassifiedTags) {
 				s1.add(t.getName());
 			}
-			model.addRow(
-					new String[] { Integer.toString(++counter), d.getName(), s.toString(), isUserClass, s1.toString() });
+			model.addRow(new String[] { Integer.toString(++counter), d.getName(), s.toString(), isUserClass, s1.toString() });
 		}
+		
+		
+		modifyTagsBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				int index = table.getSelectedRow();
+				if(index < 0) {
+					JOptionPane.showMessageDialog(rd, "No row selected!");
+					return;
+				}
+				td.setVisible(true);
+				ArrayList<Tag> newTags = td.getTdf().getTags();
+				ArrayList<String> tagNames = extractTagNames(newTags);
+				table.setValueAt(tagNames, index, 4);
+				model.fireTableDataChanged();
+				
+			}
 
+		});
+		
+	}
+	
+	private ArrayList<String> extractTagNames(ArrayList<Tag> newTags) {
+		
+		ArrayList<String> list = new ArrayList<>();
+		
+		for(Tag t : newTags) {
+			list.add(t.getName());
+		}
+		
+		return list;
 	}
 
 }

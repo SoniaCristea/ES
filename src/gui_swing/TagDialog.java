@@ -28,6 +28,7 @@ public class TagDialog extends JFrame {
 	private JTable table;
 	private JTextField nameTxtField;
 	private JTextField tresholdTxtField;
+	private JButton btnClose;
 	
 	private TagDialogFunc tdf;
 
@@ -69,7 +70,8 @@ public class TagDialog extends JFrame {
 		sp.setAlignmentX(LEFT_ALIGNMENT);
 		sp.setMaximumSize(new Dimension(430, 100));
 		
-		JButton btnClose = new JButton("OK");
+		
+		btnClose = new JButton("OK");
 		btnClose.setAlignmentX(LEFT_ALIGNMENT);
 		btnClose.addActionListener(new ActionListener() {
 			
@@ -99,6 +101,11 @@ public class TagDialog extends JFrame {
 		setVisible(true);
 	}
 	
+	
+	public JButton getBtnClose() {
+		return btnClose;
+	}
+
 	public TagDialogFunc getTdf() {
 		return tdf;
 	}
