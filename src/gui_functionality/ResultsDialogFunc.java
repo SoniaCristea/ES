@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import src.extensions.Document;
 import src.extensions.DocumentFolder;
@@ -30,8 +29,8 @@ public class ResultsDialogFunc {
 	private int counter = 0;
 	private TagDialogFunc tdf;
 	private FolderDialogFunc fdf;
-	private ArrayList<Tag> userClassifiedTags = new ArrayList<>();
-	private DefaultTableModel model;
+//	private ArrayList<Tag> userClassifiedTags = new ArrayList<>();
+//	private DefaultTableModel model;
 	private Classifier c;
 	private ArrayList<Document> classifiedFiles=new ArrayList<>();
 
@@ -47,7 +46,7 @@ public class ResultsDialogFunc {
 
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		ArrayList<DocumentFolder> folders = fdf.getFolders();
-		userClassifiedTags = tdf.getTags();
+//		userClassifiedTags = tdf.getTags();
 		
 		for(DocumentFolder f:folders){
 

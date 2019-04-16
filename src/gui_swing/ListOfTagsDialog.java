@@ -14,20 +14,20 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import src.gui_functionality.ListOfTagsDialogFunc;
-import src.gui_functionality.TagDialogFunc;
 import src.gui_swing.TagDialog;
 
 public class ListOfTagsDialog extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel panel = new JPanel();
 	private JButton addTagBtn;
 	private JTable table;
-//	private JTextField nameTxtField;
-//	private JTextField tresholdTxtField;
 	private JButton btnClose;
 	
 	private ListOfTagsDialogFunc tdf;
@@ -45,19 +45,6 @@ public class ListOfTagsDialog extends JFrame {
 		tagName.setFont(new Font("Sans Serif", Font.BOLD, 15));
 		tagName.setAlignmentX(LEFT_ALIGNMENT);
 		
-//		nameTxtField = new JTextField();
-//		nameTxtField.setMaximumSize(new Dimension(430, 30));
-//		nameTxtField.setAlignmentX(LEFT_ALIGNMENT);
-//		tagName.setLabelFor(nameTxtField);
-
-//		JLabel tagTreshold = new JLabel("Enter tag treshold:");
-//		tagTreshold.setFont(new Font("Sans Serif", Font.BOLD, 15));
-//		
-//		tresholdTxtField = new JTextField();
-//		tresholdTxtField.setMaximumSize(new Dimension(430, 30));
-//		tresholdTxtField.setAlignmentX(LEFT_ALIGNMENT);
-//		tagTreshold.setLabelFor(tresholdTxtField);
-
 		addTagBtn = new JButton("Add tag");
 		addTagBtn.setMaximumSize(new Dimension(150, 30));
 
@@ -82,12 +69,6 @@ public class ListOfTagsDialog extends JFrame {
 		
 		
 		panel.add(tagName);
-//		panel.add(Box.createRigidArea(new Dimension(10, 10)));
-//		panel.add(nameTxtField);
-//		panel.add(Box.createRigidArea(new Dimension(10, 10)));
-//		panel.add(tagTreshold);
-//		panel.add(Box.createRigidArea(new Dimension(10, 10)));
-//		panel.add(tresholdTxtField);
 		panel.add(Box.createRigidArea(new Dimension(10, 15)));
 		panel.add(addTagBtn);
 		panel.add(Box.createRigidArea(new Dimension(10, 15)));

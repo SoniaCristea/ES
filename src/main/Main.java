@@ -1,21 +1,8 @@
 package src.main;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-
-import src.extensions.Document;
-import src.extensions.JSONtoObject;
-import src.extensions.Tag;
 import src.gui_swing.Menu;
-import src.util.Classifier;
-import src.util.Crawler;
-import src.util.MyJSONobjCreator;
-import src.util.MyJSONParser;
 
 public class Main {
 	
@@ -65,7 +52,7 @@ public class Main {
 //	
 //		bw.close();
 		
-		Menu menu = new Menu();
+		 new Menu();
 	}
 
 }

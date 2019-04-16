@@ -15,14 +15,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import src.gui_functionality.FolderDialogFunc;
-import src.gui_functionality.ResultsDialogFunc;
-import src.gui_functionality.TagDialogFunc;
 
 
 
 public class Menu extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel panel = new JPanel();
 	private TagDialog td;
 	private FolderDialog fd;

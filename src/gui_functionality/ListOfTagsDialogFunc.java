@@ -57,10 +57,11 @@ public class ListOfTagsDialogFunc {
 						if((file.getPath()).equals(udf.getFilePath())){
 							file.addUserTag(tag);
 							file.setUserClassified(true);
-							System.out.println(file.toString());
+							tag.addFile(file);
+						//	System.out.println(file.toString());
 							Classifier c= new Classifier(tdf);
 							c.addDictionaryToTag(tag, file);
-							System.out.println(tag.toString());
+						//	System.out.println(tag.toString());
 						}
 					}
 				}

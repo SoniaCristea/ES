@@ -23,6 +23,10 @@ import src.gui_functionality.TagDialogFunc;
 
 public class TagDialog extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel panel = new JPanel();
 	private JButton addTagBtn;
 	private JTable table;

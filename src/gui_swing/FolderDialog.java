@@ -22,6 +22,10 @@ import src.gui_functionality.FolderDialogFunc;
 
 public class FolderDialog extends JFrame{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel panel = new JPanel();
 	private JCheckBox considerSubfoldersCB;
 	private JTextField folderNameTxt;

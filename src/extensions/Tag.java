@@ -55,6 +55,10 @@ public class Tag {
 	public void addWordToDictionary(String word){
 		dictionary.add(word);
 	}
+	
+	public void addFile(Document f){
+		files.add(f);
+	}
 
 	@Override
 	public int hashCode() {

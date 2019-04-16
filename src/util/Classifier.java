@@ -1,15 +1,9 @@
 package src.util;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -18,14 +12,10 @@ import src.extensions.Document;
 import src.extensions.DocumentFolder;
 import src.extensions.Tag;
 import src.gui_functionality.TagDialogFunc;
-import src.gui_swing.TagDialog;
 
 public class Classifier {
 
-	private List<String> wordsList = new ArrayList<String>();
 	private List<String> fileList = new ArrayList<String>();
-	private File file = new File("out.txt");
-	private File wordsFile = new File("words.txt");
 	private ArrayList<String> words=new ArrayList<>();
 	private TagDialogFunc tdf;
 	private HashMap<Tag,Integer> tagAppearances=new HashMap<>();
@@ -38,62 +28,10 @@ public class Classifier {
 	}
 	public Classifier(){
 		words=initReadWords();
-		this.tdf=tdf;
 		allTags=tdf.getTags();
 	}
 	//removable words
 
-	public void classify() {
-		
-//		BufferedReader reader = null;
-//		BufferedReader wordsReader = null;
-//
-//		try {
-//			wordsReader = new BufferedReader(new FileReader(wordsFile));
-//			String words = null;
-//
-//			while ((words = wordsReader.readLine()) != null) {
-//				wordsList.add(words);
-//			}
-//
-//			reader = new BufferedReader(new FileReader(file));
-//			String text = null;
-//
-//			while ((text = reader.readLine()) != null) {
-//				Scanner s2 = new Scanner(text);
-//				while (s2.hasNext()) {
-//					String ss = s2.next();
-//					String s = removePunctuation(ss.trim());
-//
-//					if (!wordsList.contains(s.toLowerCase())) {
-//						if (!fileList.contains(s.toLowerCase())) {
-//							if (!checkPlural(s, fileList)) {
-//								fileList.add(s);
-//							}
-//						}
-//					}
-//				}
-//
-//			}
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		} finally {
-//			try {
-//				if (reader != null) {
-//					reader.close();
-//				}
-//				if (wordsReader != null) {
-//					wordsReader.close();
-//				}
-//			} catch (IOException e) {
-//			}
-//		}
-//
-//		// print out the list
-//		//System.out.println(fileList);
-	}
 
 	public static String removePunctuation(String word) {
 		String[] punctuations = { "(", ",", ".", "/", "<", ">", "?", ";", "'", ":", "\"", "[", "]", "{", "}", //
@@ -199,33 +137,19 @@ public class Classifier {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		Scanner wordScanner = null;
 		while (lineScanner.hasNextLine()) {
-			Scanner wordScanner = new Scanner(lineScanner.nextLine());
-			String sentence="";
+			wordScanner = new Scanner(lineScanner.nextLine());
 			while (wordScanner.hasNext()) {
 				String s = wordScanner.next();
 				s=removePunctuation(s);
 				if(!words.contains(s)){
-//					try {
-//						writer = new BufferedWriter(new FileWriter("temp.txt"));
-//						sentence+=s+" ";
-//						writer.write(sentence);
 						
 					wordsFromFile.add(s.toLowerCase());
-					//	System.out.println(s);
-//					} catch (IOException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
 				}
 			}
-//			try {
-//			//	writer.close();
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
 		}
+		wordScanner.close();
 		return wordsFromFile;
 	}
 	
@@ -238,14 +162,16 @@ public class Classifier {
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
+			Scanner wordScanner = null;
 			while (lineScanner.hasNextLine()) {
-				Scanner wordScanner = new Scanner(lineScanner.nextLine());
+				wordScanner = new Scanner(lineScanner.nextLine());
 				while (wordScanner.hasNext()) {
 					String s = wordScanner.next();
 					words.add(s);
 					//System.out.println(s);
 				}
 			}
+			wordScanner.close();
 			return words;
 		}
 		
