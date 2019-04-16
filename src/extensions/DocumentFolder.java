@@ -1,4 +1,4 @@
-package extensions;
+package src.extensions;
 
 import java.util.ArrayList;
 
@@ -89,4 +89,8 @@ public class DocumentFolder {
 			return false;
 		return true;
 	}
+	
+//	public DocumentFolder getFolderByFullPath(String fullPath){
+//		
+//	}
 }

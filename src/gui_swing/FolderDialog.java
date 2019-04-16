@@ -1,4 +1,4 @@
-package gui_swing;
+package src.gui_swing;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -18,7 +18,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import gui_functionality.FolderDialogFunc;
+import src.gui_functionality.FolderDialogFunc;
 
 public class FolderDialog extends JFrame{
 	

@@ -1,4 +1,4 @@
-package main;
+package src.main;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -8,14 +8,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import extensions.Document;
-import extensions.JSONtoObject;
-import extensions.Tag;
-import gui_swing.Menu;
-import util.Classifier;
-import util.Crawler;
-import util.MyJSONobjCreator;
-import util.MyJSONParser;
+import src.extensions.Document;
+import src.extensions.JSONtoObject;
+import src.extensions.Tag;
+import src.gui_swing.Menu;
+import src.util.Classifier;
+import src.util.Crawler;
+import src.util.MyJSONobjCreator;
+import src.util.MyJSONParser;
 
 public class Main {
 	

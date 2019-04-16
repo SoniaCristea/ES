@@ -1,4 +1,4 @@
-package gui_swing;
+package src.gui_swing;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -12,7 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import gui_functionality.ResultsDialogFunc;
+import src.gui_functionality.ResultsDialogFunc;
 
 public class ResultsDialog extends JFrame{
 	

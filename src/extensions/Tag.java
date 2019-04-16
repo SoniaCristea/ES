@@ -1,4 +1,4 @@
-package extensions;
+package src.extensions;
 import java.util.ArrayList;
 
 public class Tag {
@@ -7,6 +7,7 @@ public class Tag {
 	private int threshold;
 	private ArrayList<Document> files;
 	private int timesOfClassification;
+	private ArrayList<String> dictionary;
 	
 	public Tag(String name, int threshold) {
 		super();
@@ -14,6 +15,7 @@ public class Tag {
 		this.threshold = threshold;
 		files=new ArrayList<>();
 		timesOfClassification = 0;
+		dictionary=new ArrayList<>();
 	}
 
 	
@@ -43,6 +45,10 @@ public class Tag {
 
 	public void setFiles(ArrayList<Document> files) {
 		this.files = files;
+	}
+	
+	public void addWordToDictionary(String word){
+		dictionary.add(word);
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package gui;
+package src.gui;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 
-import extensions.Document;
+import src.extensions.Document;
 
 public class FolderDialog extends Composite {
   private Text text;

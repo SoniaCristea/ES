@@ -1,4 +1,4 @@
-package gui_swing;
+package src.gui_swing;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -17,7 +17,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import gui_functionality.TagDialogFunc;
+import src.gui_functionality.TagDialogFunc;
 
 
 
@@ -124,5 +124,6 @@ public class TagDialog extends JFrame {
 	public JTextField getTresholdTxtField() {
 		return tresholdTxtField;
 	}
+	
 
 }

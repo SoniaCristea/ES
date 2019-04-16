@@ -1,4 +1,4 @@
-package util;
+package src.util;
 
 import java.io.File;
 import java.io.FileWriter;

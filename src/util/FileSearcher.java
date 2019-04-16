@@ -1,10 +1,10 @@
-package util;
+package src.util;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 
-import extensions.Document;
+import src.extensions.Document;
 
 public class FileSearcher {
 

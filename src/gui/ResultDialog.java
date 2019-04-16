@@ -1,4 +1,4 @@
-package gui;
+package src.gui;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;

@@ -1,4 +1,4 @@
-package extensions;
+package src.extensions;
 import java.util.ArrayList;
 
 public class Document {
@@ -109,5 +109,7 @@ public class Document {
 				+ ", userSelectedTags=" + userSelectedTags + "]";
 	}
 	
-	
+	public void addUserTag(Tag t){
+		userSelectedTags.add(t);
+	}
 }

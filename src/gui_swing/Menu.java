@@ -1,4 +1,4 @@
-package gui_swing;
+package src.gui_swing;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -15,9 +15,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import gui_functionality.FolderDialogFunc;
-import gui_functionality.ResultsDialogFunc;
-import gui_functionality.TagDialogFunc;
+import src.gui_functionality.FolderDialogFunc;
+import src.gui_functionality.ResultsDialogFunc;
+import src.gui_functionality.TagDialogFunc;
 
 
 
@@ -27,6 +27,7 @@ public class Menu extends JFrame {
 	private TagDialog td;
 	private FolderDialog fd;
 	private ResultsDialog rd;
+	private UserAssignDialog ud;
 
 	public Menu() {
 
@@ -68,6 +69,15 @@ public class Menu extends JFrame {
 				rd = new ResultsDialog(td, fd);
 			}
 		});
+		
+		JButton assignTagBtn = createButton("Assign tag to file");
+		assignTagBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ud = new UserAssignDialog(fd,td);
+			}
+		});
 
 		panel.add(label);
 		panel.add(Box.createRigidArea(new Dimension(10, 20)));
@@ -76,6 +86,8 @@ public class Menu extends JFrame {
 		panel.add(folderDialogBtn);
 		panel.add(Box.createRigidArea(new Dimension(10, 10)));
 		panel.add(resultsDialogBtn);
+		panel.add(Box.createRigidArea(new Dimension(10, 10)));
+		panel.add(assignTagBtn);
 		panel.add(Box.createRigidArea(new Dimension(10, 10)));
 
 		setVisible(true);

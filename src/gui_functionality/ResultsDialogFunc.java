@@ -1,4 +1,4 @@
-package gui_functionality;
+package src.gui_functionality;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,12 +9,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import extensions.Document;
-import extensions.DocumentFolder;
-import extensions.Tag;
-import gui_swing.FolderDialog;
-import gui_swing.ResultsDialog;
-import gui_swing.TagDialog;
+import src.extensions.Document;
+import src.extensions.DocumentFolder;
+import src.extensions.Tag;
+import src.gui_swing.FolderDialog;
+import src.gui_swing.ResultsDialog;
+import src.gui_swing.TagDialog;
+import src.util.Classifier;
 
 public class ResultsDialogFunc {
 
@@ -28,6 +29,7 @@ public class ResultsDialogFunc {
 	private FolderDialogFunc fdf;
 	private ArrayList<Tag> userClassifiedTags = new ArrayList<>();
 	private DefaultTableModel model;
+	private Classifier c;
 
 	public ResultsDialogFunc(ResultsDialog rd, TagDialog td, FolderDialog fd) {
 
@@ -45,33 +47,34 @@ public class ResultsDialogFunc {
 		
 		for(DocumentFolder f:folders){
 
-		for (Document d : f.getFiles()) {
-			d.setUserSelectedTags(userClassifiedTags);
-			String isUserClass = "";
-			if (d.isUserClassified()) {
-				isUserClass = "yes";
-			} else {
-				isUserClass = "no";
-			}
-
-			// am vrut sa afisez doar numele Tag-ului, nu si treshold si blabla
-			// sa arate mai frumos in tabel cand se afiseaza
-
-			ArrayList<Tag> docTags = d.getTags();
-			ArrayList<String> s = new ArrayList<>();
-			// tags from the folder's tag list
-
-			for (Tag t : docTags) {
-				s.add(t.getName());
-			}
-
-			// user classified tags
-			ArrayList<String> s1 = new ArrayList<>();
-			for (Tag t : userClassifiedTags) {
-				s1.add(t.getName());
-			}
-			model.addRow(new String[] { Integer.toString(++counter), d.getName(), s.toString(), isUserClass, s1.toString() });
-		}
+//		for (Document d : f.getFiles()) {
+//			d.setUserSelectedTags(userClassifiedTags);
+//			String isUserClass = "";
+//			if (d.isUserClassified()) {
+//				isUserClass = "yes";
+//			} else {
+//				isUserClass = "no";
+//			}
+//
+//			// am vrut sa afisez doar numele Tag-ului, nu si treshold si blabla
+//			// sa arate mai frumos in tabel cand se afiseaza
+//
+//			ArrayList<Tag> docTags = d.getTags();
+//			ArrayList<String> s = new ArrayList<>();
+//			// tags from the folder's tag list
+//
+//			for (Tag t : docTags) {
+//				s.add(t.getName());
+//			}
+//
+//			// user classified tags
+//			ArrayList<String> s1 = new ArrayList<>();
+//			for (Tag t : userClassifiedTags) {
+//				s1.add(t.getName());
+//			}
+//			model.addRow(new String[] { Integer.toString(++counter), d.getName(), s.toString(), isUserClass, s1.toString() });
+//		}
+			model.addRow(new String[] { Integer.toString(++counter), f.getFullPath(), "", "", "" });
 		}
 		
 		modifyTagsBtn.addActionListener(new ActionListener() {
@@ -89,6 +92,35 @@ public class ResultsDialogFunc {
 				ArrayList<String> tagNames = extractTagNames(newTags);
 				table.setValueAt(tagNames, index, 4);
 				model.fireTableDataChanged();
+				
+			}
+
+		});
+		
+		btnRun.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				int index = table.getSelectedRow();
+				if(index < 0) {
+					JOptionPane.showMessageDialog(rd, "No row selected!");
+					return;
+				}
+				td.setVisible(true);
+//				String folder=table.getColumn(1).get;
+				String folder=(String) table.getModel().getValueAt(index, 1);
+				System.out.println(folder);
+				
+				for(DocumentFolder f: folders){
+					if(f.getFullPath().equals(folder))
+						c=new Classifier();
+						c.classify(f);
+				}
+//				ArrayList<Tag> newTags = td.getTdf().getTags();
+//				ArrayList<String> tagNames = extractTagNames(newTags);
+//				table.setValueAt(tagNames, index, 4);
+//				model.fireTableDataChanged();
 				
 			}
 

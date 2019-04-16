@@ -1,4 +1,4 @@
-package gui_functionality;
+package src.gui_functionality;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,8 +10,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import extensions.Tag;
-import gui_swing.TagDialog;
+import src.extensions.Tag;
+import src.gui_swing.TagDialog;
 
 public class TagDialogFunc {
 	

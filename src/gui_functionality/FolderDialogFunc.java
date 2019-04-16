@@ -1,4 +1,4 @@
-package gui_functionality;
+package src.gui_functionality;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,10 +20,10 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import extensions.Document;
-import extensions.DocumentFolder;
-import gui_swing.FolderDialog;
-import util.FileSearcher;
+import src.extensions.Document;
+import src.extensions.DocumentFolder;
+import src.gui_swing.FolderDialog;
+import src.util.FileSearcher;
 
 public class FolderDialogFunc {
 
@@ -36,6 +36,7 @@ public class FolderDialogFunc {
 	private int counter = 0;
 	private File selectedFolder;
 	private boolean subfoldersConsidered;
+	
 
 	public FolderDialogFunc(FolderDialog fd) {
 

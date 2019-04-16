@@ -1,4 +1,4 @@
-package util;
+package src.util;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -20,8 +20,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import extensions.Document;
-import extensions.Tag;
+import src.extensions.Document;
+import src.extensions.Tag;
 
 public class MyJSONobjCreator {
 
