@@ -11,7 +11,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.io.File;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
@@ -73,6 +74,7 @@ public class FolderDialogFunc {
 					}
 					folder.setFiles(fileSearcher.getTxtFiles());
 					classify(folder);
+			
 					DefaultTableModel model = (DefaultTableModel) table.getModel();
 					model.addRow(new String[] { Integer.toString(++counter), folderName });
 				}
@@ -82,6 +84,9 @@ public class FolderDialogFunc {
 		});
 
 	}
+
+	
+
 
 	private void createChooser(FolderDialog fd) {
 
