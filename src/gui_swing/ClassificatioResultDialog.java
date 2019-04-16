@@ -5,26 +5,22 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import src.gui_functionality.ResultsDialogFunc;
+import src.gui_functionality.ClassificationResultDialogFunc;
 
-public class ResultsDialog extends JFrame{
+public class ClassificatioResultDialog extends JFrame{
 	
 	private JPanel panel = new JPanel();
 	private JPanel buttonsPannel = new JPanel();
 	private JTable table;
-	private JButton btnRun;
-	private JButton modifyTagsBtn;
-	private JButton clearBtn;
-	private ResultsDialogFunc rdf;
+
 	
-	public ResultsDialog(TagDialog td, FolderDialog fd) {
+	public ClassificatioResultDialog(ResultsDialog fd) {
 		
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setTitle("User actions");
@@ -45,26 +41,11 @@ public class ResultsDialog extends JFrame{
 		sp.setMaximumSize(new Dimension(620, 300));
 		panel.setVisible(true);
 		
-		btnRun = new JButton("Run");
-		btnRun.setAlignmentX(LEFT_ALIGNMENT);
-		btnRun.setMaximumSize(new Dimension(200, 30));
 		
-		modifyTagsBtn = new JButton("Modify tags");
-		modifyTagsBtn.setAlignmentX(CENTER_ALIGNMENT);
-		modifyTagsBtn.setMaximumSize(new Dimension(200, 30));
-		
-		clearBtn = new JButton("Clear user classification");
-		clearBtn.setAlignmentX(CENTER_ALIGNMENT);
-		clearBtn.setMaximumSize(new Dimension(200, 30));
-		
-		
-		buttonsPannel.add(btnRun);	
-		buttonsPannel.add(modifyTagsBtn);	
-		buttonsPannel.add(clearBtn);	
-		
+	
 		panel.add(buttonsPannel,BorderLayout.SOUTH);
 		
-		rdf = new ResultsDialogFunc(this, td, fd);
+		ClassificationResultDialogFunc rdf = new ClassificationResultDialogFunc(this,fd);
 		
 		setVisible(true);
 	}
@@ -73,22 +54,6 @@ public class ResultsDialog extends JFrame{
 		return table;
 	}
 
-	public JButton getBtnRun() {
-		return btnRun;
-	}
 
-	public JButton getModifyTagsBtn() {
-		return modifyTagsBtn;
-	}
-
-	public JButton getClearBtn() {
-		return clearBtn;
-	}
-
-	public ResultsDialogFunc getRdf() {
-		return rdf;
-	}
-	
-	
 	
 }

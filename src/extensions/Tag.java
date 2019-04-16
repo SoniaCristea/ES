@@ -47,6 +47,11 @@ public class Tag {
 		this.files = files;
 	}
 	
+	public ArrayList<String> getDictionary() {
+		return dictionary;
+	}
+
+
 	public void addWordToDictionary(String word){
 		dictionary.add(word);
 	}

@@ -58,7 +58,7 @@ public class ListOfTagsDialogFunc {
 							file.addUserTag(tag);
 							file.setUserClassified(true);
 							System.out.println(file.toString());
-							Classifier c= new Classifier();
+							Classifier c= new Classifier(tdf);
 							c.addDictionaryToTag(tag, file);
 							System.out.println(tag.toString());
 						}

@@ -112,4 +112,8 @@ public class Document {
 	public void addUserTag(Tag t){
 		userSelectedTags.add(t);
 	}
+	
+	public void addTag(Tag t){
+		tags.add(t);
+	}
 }
