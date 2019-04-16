@@ -1,0 +1,1 @@
+Document [name=glass.txt, path=C:\Users\Patricia\workspace\ESS\test\glass.txt, tags=[], isUserClassified=true, userSelectedTags=[Tag [name=glass, threshold=2, dictionary=[]]]]

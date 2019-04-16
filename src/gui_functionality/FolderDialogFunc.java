@@ -2,7 +2,10 @@ package src.gui_functionality;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -26,6 +29,7 @@ public class FolderDialogFunc {
 	private int counter = 0;
 	private File selectedFolder;
 	private boolean subfoldersConsidered;
+	private static File folderFile = new File("folders.txt");
 	
 
 	public FolderDialogFunc(FolderDialog fd) {
@@ -67,6 +71,7 @@ public class FolderDialogFunc {
 			
 					DefaultTableModel model = (DefaultTableModel) table.getModel();
 					model.addRow(new String[] { Integer.toString(++counter), folderName });
+					writeFoldersToFile();
 				}
 
 			}
@@ -94,5 +99,20 @@ public class FolderDialogFunc {
 		return folders;
 	}
 
+	private void writeFoldersToFile() {
+
+		BufferedWriter bw = null;
+		
+		try {
+			bw = new BufferedWriter(new FileWriter(folderFile, true));
+			
+			for(DocumentFolder doc : folders) {
+				bw.write(doc.toString());
+			}
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

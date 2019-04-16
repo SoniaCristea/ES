@@ -2,6 +2,10 @@ package src.gui_functionality;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -25,6 +29,7 @@ public class ListOfTagsDialogFunc {
 	private ArrayList<Tag> tags = new ArrayList<>();
 	private TagDialogFunc tdf;
 	private UserAssignDialogFunc udf;
+	private static File files = new File("files.txt");
 
 	public ListOfTagsDialogFunc(ListOfTagsDialog f, TagDialog td, UserAssignDialog ud) {
 
@@ -52,6 +57,13 @@ public class ListOfTagsDialogFunc {
 				}
 				String t = (String) table.getModel().getValueAt(index, 1);
 				Tag tag = getTagByName(t);
+				
+				BufferedWriter bw = null;
+				try {
+					bw = new BufferedWriter(new FileWriter(files, false));
+				} catch (IOException e1) {
+					System.out.println(e1.getMessage());
+				}
 
 				for (DocumentFolder folder : udf.getFolders()) {
 					for (Document file : folder.getFiles()) {
@@ -59,6 +71,13 @@ public class ListOfTagsDialogFunc {
 							file.addUserTag(tag);
 							file.setUserClassified(true);
 							tag.addFile(file);
+							if ( file.isUserClassified()) {
+								try {
+									bw.write(file.toString());
+								} catch (IOException e1) {
+									System.out.println(e1.getMessage());
+								}
+							}
 							System.out.println("File after assignment " + file.toString());
 							Classifier c = new Classifier(tdf);
 							c.addDictionaryToTag(tag, file);
@@ -67,6 +86,11 @@ public class ListOfTagsDialogFunc {
 					}
 				}
 
+				try {
+					bw.close();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 				udf.getTableModel().fireTableDataChanged();
 			}
 		});
