@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 import src.extensions.Document;
 import src.extensions.DocumentFolder;
+import src.extensions.Tag;
 
 public class Classifier {
 
@@ -20,9 +21,12 @@ public class Classifier {
 	private List<String> fileList = new ArrayList<String>();
 	private File file = new File("out.txt");
 	private File wordsFile = new File("words.txt");
-	
-	//removable words
 	private ArrayList<String> words=new ArrayList<>();
+	
+	public Classifier(){
+		words=initReadWords();
+	}
+	//removable words
 
 	public void classify() {
 		
@@ -117,7 +121,7 @@ public class Classifier {
 
 	private ArrayList<String> removeUnnecessaryWords(Document d) {
 		Scanner lineScanner = null;
-		BufferedWriter writer=null;
+//		BufferedWriter writer=null;
 		ArrayList<String> wordsFromFile=new ArrayList<String>();
 		try {
 			lineScanner = new Scanner(new File(d.getPath()));
@@ -144,12 +148,12 @@ public class Classifier {
 //					}
 				}
 			}
-			try {
-				writer.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//			try {
+//			//	writer.close();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 		}
 		return wordsFromFile;
 	}
@@ -173,4 +177,11 @@ public class Classifier {
 			}
 			return words;
 		}
+		
+	public void addDictionaryToTag(Tag tag,Document d){
+		ArrayList<String> fileWords=removeUnnecessaryWords(d);
+		for(String word:fileWords){
+			tag.addWordToDictionary(word);
+		}
+	}
 }

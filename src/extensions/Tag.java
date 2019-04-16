@@ -81,7 +81,7 @@ public class Tag {
 
 	@Override
 	public String toString() {
-		return "Tag [name=" + name + ", threshold=" + threshold + "]";
+		return "Tag [name=" + name + ", threshold=" + threshold + ", dictionary=" + dictionary + "]";
 	}
 	
 	

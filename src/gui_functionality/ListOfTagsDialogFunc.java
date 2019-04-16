@@ -15,6 +15,7 @@ import src.extensions.Tag;
 import src.gui_swing.ListOfTagsDialog;
 import src.gui_swing.TagDialog;
 import src.gui_swing.UserAssignDialog;
+import src.util.Classifier;
 
 public class ListOfTagsDialogFunc {
 	private JButton addTagBtn = new JButton();
@@ -57,6 +58,9 @@ public class ListOfTagsDialogFunc {
 							file.addUserTag(tag);
 							file.setUserClassified(true);
 							System.out.println(file.toString());
+							Classifier c= new Classifier();
+							c.addDictionaryToTag(tag, file);
+							System.out.println(tag.toString());
 						}
 					}
 				}
