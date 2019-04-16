@@ -84,14 +84,21 @@ public class Classifier {
 						
 					}
 				}
-				
-				d.addTag(getTagWithMaxAppearences());
+				Tag tag=getTagWithMaxAppearences();
+				d.addTag(tag);
+				addFileToTag(d, tag);
 				System.out.println("!!!!!!!!"+d);
 			}
 		}
 		return list;
 	}
 	
+	private void addFileToTag(Document f,Tag tag){
+		for(Tag t : allTags){
+			if(t.equals(tag))
+				t.addFile(f);
+		}
+	}
 	private Tag getTagWithMaxAppearences(){
 		int max=0;
 		Tag t=null;
@@ -104,7 +111,7 @@ public class Classifier {
 	            	max=value;
 	            	t=key;
 	            }
-	            System.out.println(key + " : " + value); 
+//	            System.out.println(key + " : " + value); 
 	        } 
 	    return t;
 	}
@@ -120,7 +127,7 @@ public class Classifier {
 	            // Add some bonus marks 
 	            // to all the students and print it 
 	  
-	            System.out.println(key); 
+//	            System.out.println(key); 
 	        } 
 	}
 	private void initTagAppearances() {
