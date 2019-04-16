@@ -56,8 +56,17 @@ public class Tag {
 		dictionary.add(word);
 	}
 	
+	public void removeWordFromDictionary(String word){
+		dictionary.remove(word);
+	}
+	
+	
 	public void addFile(Document f){
 		files.add(f);
+	}
+	
+	public void removeFile(Document f){
+		files.remove(f);
 	}
 
 	@Override

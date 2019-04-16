@@ -15,10 +15,6 @@ import src.gui_functionality.ClassificationResultDialogFunc;
 
 public class ClassificatioResultDialog extends JFrame{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private JPanel panel = new JPanel();
 	private JPanel buttonsPannel = new JPanel();
 	private JTable table;

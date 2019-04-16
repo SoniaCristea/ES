@@ -50,7 +50,7 @@ public UserAssignDialogFunc(UserAssignDialog fd,FolderDialog f,TagDialog td) {
 			}
 
 			filePath=(String) table.getModel().getValueAt(index, 1);
-			new ListOfTagsDialog(fd,td);
+			ListOfTagsDialog ltd= new ListOfTagsDialog(fd,td);
 
 		}
 

@@ -53,7 +53,7 @@ public class Menu extends JFrame {
 			}
 		});
 
-		JButton folderDialogBtn = createButton("Choose folders");
+		JButton folderDialogBtn = createButton("Enter folders");
 		folderDialogBtn.addActionListener(new ActionListener() {
 
 			@Override
@@ -62,7 +62,7 @@ public class Menu extends JFrame {
 			}
 		});
 
-		JButton resultsDialogBtn = createButton("Show classification");
+		JButton resultsDialogBtn = createButton("Classify");
 		resultsDialogBtn.addActionListener(new ActionListener() {
 			
 			@Override
@@ -86,9 +86,9 @@ public class Menu extends JFrame {
 		panel.add(Box.createRigidArea(new Dimension(10, 10)));
 		panel.add(folderDialogBtn);
 		panel.add(Box.createRigidArea(new Dimension(10, 10)));
-		panel.add(resultsDialogBtn);
-		panel.add(Box.createRigidArea(new Dimension(10, 10)));
 		panel.add(assignTagBtn);
+		panel.add(Box.createRigidArea(new Dimension(10, 10)));
+		panel.add(resultsDialogBtn);
 		panel.add(Box.createRigidArea(new Dimension(10, 10)));
 
 		setVisible(true);

@@ -39,7 +39,7 @@ public class ResultsDialog extends JFrame{
 		
 		buttonsPannel.setLayout(new GridLayout(1, 3));
 		
-		table = new JTable(new DefaultTableModel (new String[][]{}, new String[]{"No.", "File name", "Tags","User classified", "User selected tags"}));
+		table = new JTable(new DefaultTableModel (new String[][]{}, new String[]{"No.", "Path", "Folder name","Subfolders"}));
 		table.getColumnModel().getColumn(0).setPreferredWidth(20);
 		table.setAlignmentX(LEFT_ALIGNMENT);
 		

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -38,8 +39,13 @@ public class TagDialogFunc {
 				String treshold = tresholdTxt.getText();
 				
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				try{
 				Tag tag = new Tag(tagName, Integer.parseInt(treshold));
 				tags.add(tag);
+				}catch(NumberFormatException ex){
+					JOptionPane.showMessageDialog(td, "Threshold must be a number!");
+					return;
+				}
 				model.addRow(new String[]{Integer.toString(++counter), tagName, treshold});
 				tagNameTxt.setText("");
 				tresholdTxt.setText("");

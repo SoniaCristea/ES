@@ -15,8 +15,10 @@ import src.extensions.DocumentFolder;
 import src.extensions.Tag;
 import src.gui_swing.ClassificatioResultDialog;
 import src.gui_swing.FolderDialog;
+import src.gui_swing.ListOfTagsDialog;
 import src.gui_swing.ResultsDialog;
 import src.gui_swing.TagDialog;
+import src.gui_swing.UserAssignDialog;
 import src.util.Classifier;
 
 public class ResultsDialogFunc {
@@ -49,35 +51,8 @@ public class ResultsDialogFunc {
 //		userClassifiedTags = tdf.getTags();
 		
 		for(DocumentFolder f:folders){
-
-//		for (Document d : f.getFiles()) {
-//			d.setUserSelectedTags(userClassifiedTags);
-//			String isUserClass = "";
-//			if (d.isUserClassified()) {
-//				isUserClass = "yes";
-//			} else {
-//				isUserClass = "no";
-//			}
-//
-//			// am vrut sa afisez doar numele Tag-ului, nu si treshold si blabla
-//			// sa arate mai frumos in tabel cand se afiseaza
-//
-//			ArrayList<Tag> docTags = d.getTags();
-//			ArrayList<String> s = new ArrayList<>();
-//			// tags from the folder's tag list
-//
-//			for (Tag t : docTags) {
-//				s.add(t.getName());
-//			}
-//
-//			// user classified tags
-//			ArrayList<String> s1 = new ArrayList<>();
-//			for (Tag t : userClassifiedTags) {
-//				s1.add(t.getName());
-//			}
-//			model.addRow(new String[] { Integer.toString(++counter), d.getName(), s.toString(), isUserClass, s1.toString() });
-//		}
-			model.addRow(new String[] { Integer.toString(++counter), f.getFullPath(), "", "", "" });
+			String considerSufolders = f.isConsiderSubfolders() ? "yes" : "no";
+			model.addRow(new String[] { Integer.toString(++counter), f.getFullPath(), f.getName(), considerSufolders });
 		}
 		
 		modifyTagsBtn.addActionListener(new ActionListener() {
@@ -90,11 +65,12 @@ public class ResultsDialogFunc {
 					JOptionPane.showMessageDialog(rd, "No row selected!");
 					return;
 				}
-				td.setVisible(true);
-				ArrayList<Tag> newTags = td.getTdf().getTags();
-				ArrayList<String> tagNames = extractTagNames(newTags);
-				table.setValueAt(tagNames, index, 4);
-				model.fireTableDataChanged();
+				new UserAssignDialog(fd, td);
+//				td.setVisible(true);
+//				ArrayList<Tag> newTags = td.getTdf().getTags();
+//				ArrayList<String> tagNames = extractTagNames(newTags);
+//				table.setValueAt(tagNames, index, 4);
+//				model.fireTableDataChanged();
 				
 			}
 
@@ -110,8 +86,6 @@ public class ResultsDialogFunc {
 					JOptionPane.showMessageDialog(rd, "No row selected!");
 					return;
 				}
-				td.setVisible(true);
-//				String folder=table.getColumn(1).get;
 				String folder=(String) table.getModel().getValueAt(index, 1);
 				System.out.println(folder);
 				
@@ -121,10 +95,6 @@ public class ResultsDialogFunc {
 						classifiedFiles=c.classify(f);
 				}
 				new ClassificatioResultDialog(rd);
-//				ArrayList<Tag> newTags = td.getTdf().getTags();
-//				ArrayList<String> tagNames = extractTagNames(newTags);
-//				table.setValueAt(tagNames, index, 4);
-//				model.fireTableDataChanged();
 				
 			}
 

@@ -116,4 +116,8 @@ public class Document {
 	public void addTag(Tag t){
 		tags.add(t);
 	}
+	
+	public void removeTag(Tag t){
+		tags.remove(t);
+	}
 }

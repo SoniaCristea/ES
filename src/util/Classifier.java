@@ -188,4 +188,11 @@ public class Classifier {
 			tag.addWordToDictionary(word);
 		}
 	}
+	
+	public void removeDictionaryFromTag(Tag tag,Document d){
+		ArrayList<String> fileWords=removeUnnecessaryWords(d);
+		for(String word:fileWords){
+			tag.removeWordFromDictionary(word);
+		}
+	}
 }
