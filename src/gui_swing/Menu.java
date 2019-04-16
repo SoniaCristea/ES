@@ -29,6 +29,7 @@ public class Menu extends JFrame {
 	private FolderDialog fd;
 	private ResultsDialog rd;
 	private UserAssignDialog ud;
+	private TagsForFileDialog tfd;
 
 	public Menu() {
 
@@ -79,6 +80,15 @@ public class Menu extends JFrame {
 				ud = new UserAssignDialog(fd,td);
 			}
 		});
+		
+		JButton tagFileDialogBtn = createButton("Show files for tag");
+		tagFileDialogBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				tfd = new TagsForFileDialog(fd,td);
+			}
+		});
 
 		panel.add(label);
 		panel.add(Box.createRigidArea(new Dimension(10, 20)));
@@ -89,6 +99,8 @@ public class Menu extends JFrame {
 		panel.add(assignTagBtn);
 		panel.add(Box.createRigidArea(new Dimension(10, 10)));
 		panel.add(resultsDialogBtn);
+		panel.add(Box.createRigidArea(new Dimension(10, 10)));
+		panel.add(tagFileDialogBtn);
 		panel.add(Box.createRigidArea(new Dimension(10, 10)));
 
 		setVisible(true);
